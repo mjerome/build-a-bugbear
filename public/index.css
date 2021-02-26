@@ -1,0 +1,159 @@
+body {
+  background: #eeeef4;
+  padding: 0;
+  color: #323232;
+}
+
+main {
+  padding-bottom: 3rem;
+}
+
+nav {
+  /* transition: all 1s; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background: #ffffff;
+}
+
+nav.top-nav {
+  height: auto;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; 
+  padding: 3rem 3rem;
+  margin-bottom: 2rem;
+}
+
+nav.top-nav h1 {
+  margin-bottom: 0;
+}
+
+nav.top-nav form {
+  margin-right: 0;
+}
+
+nav form {
+  position: relative;
+  width: 40%;
+  margin: 0 auto;
+  height: 3rem;
+}
+
+nav input {
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+  margin-right: -4px;
+}
+nav button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  border-radius: 0 4px 4px 0;
+  border: none;
+  border-left: 1px solid #ccc;
+  padding: 0.4rem 1rem;
+  background: none;
+  margin-bottom: 0;
+}
+
+.monster-block {
+  background: #fff;
+  text-align: left;
+  width: 75%;
+  box-shadow: 0px 4px 7px #ccc;
+  margin: 0 auto 0;
+  padding: 3rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  margin-top: 0;
+  color: #30322f;
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 300;
+  margin-bottom: 6rem;
+}
+
+h2 {
+  color: #30322f;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: .5px;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+.section {
+  border-top: 1px solid #30322f;
+  border-bottom: 1px solid #30322f;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0.8rem 0;
+}
+.section div {
+  margin: 0.25rem 0;
+}
+
+.stat {
+  margin-bottom: 1rem;
+}
+
+.sub-stat {
+  margin-right: 1rem;
+}
+
+.stat-header {
+  font-weight: bold;
+  line-height: 1.4rem;
+  margin-bottom: 0.25rem;
+  color: #30322f;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  min-height: 6rem;
+  line-height: 1.4rem;
+}
+
+.abilities {
+  display: flex;
+  justify-content: space-around;
+}
+.abilities div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.abilities input {
+  max-width: 50px;
+}
+
+button {
+  background: #fff;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  color: #30322f;
+  font-weight: bold;
+}
+
+/* # sourceMappingURL=index.css.map */

@@ -1,0 +1,13 @@
+@media print {
+  button, nav {
+    display: none;
+  }
+
+  .monster-block {
+    box-shadow: none;
+    margin: 2rem auto;
+    padding: 0;
+  }
+}
+
+/*# sourceMappingURL=print.css.map */
