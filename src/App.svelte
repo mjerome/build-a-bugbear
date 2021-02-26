@@ -25,7 +25,7 @@
 			monsterDetail = $monster;
 			document.getElementById('nav').classList.add('top-nav');
 		}).then(() => {
-			console.log('monster afterSearch ', $monster);
+			searchValue='';
 		});
 		
 	};
@@ -33,9 +33,9 @@
 
 <main>
 	<nav id="nav">
-		<h1>Monster Maker</h1>
+		<h1>Build a Bugbear</h1>
 		<form>
-			<input bind:value={searchValue} />
+			<input placeholder="Enter monster name" bind:value={searchValue} />
 			<button on:click={handleOnClick} type="button"><img alt="search for a monster" src="/assets/search.svg"/></button>
 		</form>
 	</nav>
