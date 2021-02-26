@@ -18,12 +18,16 @@
 
 	// method to handle the event to get the detail of the monster.
 	function handleOnClick() {
-		let search = searchValue.replace(' ', '-').toLowerCase();
+		console.log('searched');
+		let search = searchValue.replaceAll(' ', '-').toLowerCase();
 		getMonsterByName(search).then(res => {
 			monster.set(res);
 			// $monster = $monster;
 			monsterDetail = $monster;
-			document.getElementById('nav').classList.add('top-nav');
+			const nav = document.getElementById('nav')
+			nav.classList.add('top-nav');
+			nav.classList.remove('home');
+
 		}).then(() => {
 			searchValue='';
 		});
@@ -32,8 +36,8 @@
 </script>
 
 <main>
-	<nav id="nav">
-		<h1>Build a Bugbear</h1>
+	<nav id="nav" class="home">
+		<h1>Build-a-Bugbear</h1>
 		<form>
 			<input placeholder="Enter monster name" bind:value={searchValue} />
 			<button on:click={handleOnClick} type="button"><img alt="search for a monster" src="/assets/search.svg"/></button>

@@ -4,7 +4,7 @@
     export let edit;
     export let dawizard;
 
-    let lowerStats = stats.replace(' ','_').toLowerCase()
+    let lowerStats = stats.replaceAll(' ','_').toLowerCase()
     let keys = [];
 
     for (var i = 0, len = $monster[lowerStats].length; i < len; i++) {
