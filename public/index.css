@@ -9,16 +9,20 @@ main {
 }
 
 nav {
-  /* transition: all 1s; */
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
   background: #ffffff;
+  display: flex;
 }
 
-nav.top-nav {
+.home nav {
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+  
+}
+
+.top-nav nav{
   height: auto;
   flex-direction: row;
   align-items: center;
@@ -27,11 +31,11 @@ nav.top-nav {
   margin-bottom: 2rem;
 }
 
-nav.top-nav h1 {
+.top-nav nav h1 {
   margin-bottom: 0;
 }
 
-nav.top-nav form {
+.top-nav nav form {
   margin-right: 0;
 }
 

@@ -29,17 +29,20 @@
     }
 </script>
 
-{#if $monster[lowerStats]}
+{#if $monster[lowerStats] && $monster[lowerStats] != ''}
+    {console.log($monster[lowerStats])}
     <div class={lowerStats, dawizard}>
         <h3>{stats}</h3>
         {#each keys as key}
             <div class="stat">
-                {#if edit}
-                    <input bind:value={$monster[lowerStats][key].name}/>
-                    <textarea bind:value={$monster[lowerStats][key].desc} />
-                {:else}
-                    <div class="stat-header">{$monster[lowerStats][key].name}</div>
-                    <div>{$monster[lowerStats][key].desc}</div>
+                {#if $monster[lowerStats][key]}
+                    {#if edit}
+                        <input bind:value={$monster[lowerStats][key].name}/>
+                        <textarea bind:value={$monster[lowerStats][key].desc} />
+                    {:else}
+                        <div class="stat-header">{$monster[lowerStats][key].name}</div>
+                        <div>{$monster[lowerStats][key].desc}</div>
+                    {/if}
                 {/if}
             </div>
         {/each}

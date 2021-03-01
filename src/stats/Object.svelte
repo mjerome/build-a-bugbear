@@ -1,6 +1,5 @@
 <script>
-    import { onMount } from "svelte";
-
+    import { afterUpdate, tick } from "svelte";
     export let stats;
     export let edit;
     export let dawizard;
@@ -11,14 +10,16 @@
     let tempOrder = [];
     const { update } = monster;
 
-    onMount(async () => {
+    afterUpdate(() => {
+        mainKeys = [];
+        console.log('afterUpdate');
         for (const [key, value] of Object.entries(stats)) {
             mainKeys.push(key);
             if (typeof $monster[key] === "object") {
+                console.log('key ', $monster[key])
                 Object.keys($monster[key]).forEach((item) => {
-                    console.log("item ", Object.keys($monster[key]));
+                    // console.log("item ", Object.keys($monster[key]));
                     update((data) => {
-                        console.log("keyItem ", data[key][item]);
                         data[key][item] = {
                             desc: data[key][item],
                             name: Object.keys(data[key]).find(
@@ -31,7 +32,11 @@
                 });
             }
         }
-    });
+
+    })
+
+
+    
 
     let addSkills = (stat) => {
         update((data) => {
