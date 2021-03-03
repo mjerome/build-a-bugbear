@@ -6,9 +6,9 @@ createServer((req, res) => {
 
   res.write(`
     <!DOCTYPE html>
-    <main id="app">${html}</main>
+    <div id="app">${html}</div>
     <script src="/dist/bundle.js"></script>
   `);
 
   res.end();
-}).listen(3000);
+}).listen(5000);

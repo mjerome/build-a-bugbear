@@ -4,7 +4,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public"
+    "start": "sirv public -s"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
@@ -17,6 +17,7 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "@rollup/plugin-json": "^4.1.0",
     "autoprefixer": "^10.2.3",
     "axios": "^0.21.1",
     "html2pdf.js": "^0.9.2",

@@ -3,6 +3,7 @@
 	import { Router, Link, Route } from "svelte-routing";
 	import Home from "./Home.svelte";
 	import MonsterDetail from "./components/MonsterDetail.svelte";
+	import NotFound from "./components/NotFound.svelte";
 	import { monster } from "./stores";
 	let name = $monster.name;
 	
@@ -10,13 +11,10 @@
 	export let url = "";
 </script>
   
-  <Router url="{url}">
+  <Router>
 	<div>
-	  <!-- <Route path="blog/:id" component="{BlogPost}" />
-	  <Route path="blog" component="{Blog}" />
-	  <Route path="about" component="{About}" /> -->
-	  <!-- <Route path="monster/{$monster.name}" component="{MonsterDetail}" /> -->
-	  <Route path="/"><Home /></Route>
-	  <Route path="/monster/:lowerName" component="{MonsterDetail}"></Route>
+	  <Route path="/" exact component="{Home}"/>
+	  <Route path="/monster/:lowerName" component="{MonsterDetail}" />
+	  <Route component="{NotFound}"/>
 	</div>
   </Router>
