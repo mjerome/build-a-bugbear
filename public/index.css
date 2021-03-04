@@ -35,15 +35,25 @@ nav {
   margin-bottom: 0;
 }
 
-.top-nav nav form {
+.top-nav nav .search {
   margin-right: 0;
 }
 
-nav form {
+nav .search {
   position: relative;
   width: 40%;
   margin: 0 auto;
   height: 3rem;
+}
+
+.search div {
+  line-height: 2rem;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+nav form {
+  height: 100%;
 }
 
 nav input {
@@ -174,7 +184,7 @@ button {
   width: 100%;
 }
 
-.not-found img {
+.wrapper-404 img {
   max-width: 40%;
 }
 

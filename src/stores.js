@@ -2,5 +2,5 @@ import { writable } from 'svelte/store';
 
 let itemValue = {};
 
-export const lowerName = writable('');
+export const searchError = writable(false);
 export const monster = writable(itemValue);

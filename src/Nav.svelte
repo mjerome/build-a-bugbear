@@ -1,12 +1,12 @@
 <script>
 
     import { onMount } from 'svelte';	
-	import {monster} from './stores';
+	import {monster, searchError} from './stores';
     import {navigate} from 'svelte-routing';
 	import { getMonsterList, getMonsterByName } from "./apis/Monster"; // import our pokemon api calls
     $: searchValue = '';
 	$: monsterDetail = monster;
-	$: monsterList = [];
+	$: error = searchError
 	
     
     
@@ -17,6 +17,7 @@
 			monster.set(res);
 			monsterDetail = $monster;
 		}).then(() => {
+            console.log(searchError);
             let name = $monster.name
 	        let lowerName = name ? name.replaceAll(' ', '-').toLowerCase() : '';
             navigate("/monster/" + lowerName, { replace: true });
@@ -31,8 +32,14 @@
 
 <nav>
     <h1>Build-a-Bugbear</h1>
-    <form>
-        <input placeholder="Enter monster name" bind:value={searchValue} />
-        <button on:click={handleOnClick} type="button"><img alt="search for a monster" src="/assets/search.svg"/></button>
-    </form>
+    <div class="search">
+        <form>
+            <input placeholder="Enter monster name" bind:value={searchValue} />
+            <button on:click={handleOnClick} type="button"><img alt="search for a monster" src="/assets/search.svg"/></button>
+        </form>
+        {#if $error}
+            <div>That monster does not exist. Please try another search.</div>
+        {/if}
+    </div>
+    
 </nav>
