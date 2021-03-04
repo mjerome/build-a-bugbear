@@ -6,8 +6,10 @@
 	import NotFound from "./components/NotFound.svelte";
 	import { monster } from "./stores";
 	let name = $monster.name;
+
 	
-	export let lowerName = name ? name.replaceAll(' ', '-').toLowerCase() : '';
+	
+	export let lowerName = name ? name.replaceAll(' ', '-').toLowerCase() : undefined;
 	export let url = "";
 </script>
   

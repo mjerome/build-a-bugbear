@@ -7,9 +7,6 @@
     let lowerStats = stats.replaceAll(' ','_').toLowerCase()
     let keys = [];
 
-    for (var i = 0, len = $monster[lowerStats].length; i < len; i++) {
-        keys.push(i)
-    };
 
     const {update} = monster;
     
@@ -30,10 +27,16 @@
 </script>
 
 {#if $monster[lowerStats] && $monster[lowerStats] != ''}
-    {console.log($monster[lowerStats])}
     <div class={lowerStats, dawizard}>
         <h3>{stats}</h3>
-        {#each keys as key}
+        {#if $monster.legendary_desc != '' && lowerStats == 'legendary_actions'} 
+            {#if edit}
+                <textarea bind:value={$monster.legendary_desc}/>
+            {:else}
+                <p>{$monster.legendary_desc}</p>
+            {/if}
+        {/if}
+        {#each Object.keys($monster[lowerStats]) as key}
             <div class="stat">
                 {#if $monster[lowerStats][key]}
                     {#if edit}

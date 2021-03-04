@@ -1,5 +1,5 @@
 <script>
-    import { afterUpdate, tick } from "svelte";
+    import { afterUpdate, onMount } from "svelte";
     export let stats;
     export let edit;
     export let dawizard;
@@ -10,30 +10,9 @@
     let tempOrder = [];
     const { update } = monster;
 
-    afterUpdate(() => {
-        mainKeys = [];
-        console.log('afterUpdate');
-        for (const [key, value] of Object.entries(stats)) {
+    for (const [key, value] of Object.entries(stats)) {
             mainKeys.push(key);
-            if (typeof $monster[key] === "object") {
-                console.log('key ', $monster[key])
-                Object.keys($monster[key]).forEach((item) => {
-                    // console.log("item ", Object.keys($monster[key]));
-                    update((data) => {
-                        data[key][item] = {
-                            desc: data[key][item],
-                            name: Object.keys(data[key]).find(
-                                (lock) => data[key][lock] === data[key][item]
-                            ),
-                        };
-                        console.log("data ", data);
-                        return data;
-                    });
-                });
-            }
-        }
-
-    })
+    }
 
 
     

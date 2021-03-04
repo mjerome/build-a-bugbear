@@ -34,6 +34,8 @@
         )
     }
 
+    console.log('new Monster block ', $monster);
+
 </script>
 <main>
     <div class="top-nav">
@@ -76,6 +78,10 @@
         <String
             stats="Actions"
             dawizard='actions'
+            edit={edit}/>
+        <String
+            stats="Legendary Actions"
+            dawizard='legendar-actions'
             edit={edit}/>
     </div>
 </main>
