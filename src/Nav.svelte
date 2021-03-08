@@ -7,13 +7,13 @@
     $: searchValue = '';
 	$: monsterDetail = monster;
 	$: error = searchError
-	
-    
-    
+
     function handleOnClick() {
-		console.log('searched', $searchError);
+		console.log('onClick called');
 		let search = searchValue.replaceAll(' ', '-').toLowerCase();
+        console.log('searchValue ', searchValue);
 		getMonsterByName(search).then(res => {
+            console.log('getting Monster', res)
             if(!$searchError) {
                 monster.set(res);
 			    monsterDetail = $monster;
@@ -24,7 +24,7 @@
                 let name = $monster.name
                 let lowerName = name ? name.replaceAll(' ', '-').toLowerCase() : '';
                 navigate("/monster/" + lowerName, { replace: true });
-                // console.log('Nav ', lowerName);
+                console.log('Nav ', lowerName);
                 // console.log('should have navigated');
                 searchValue='';
                 console.log('monster onMount ', $monster);
@@ -33,13 +33,31 @@
 		});
 		
 	};
+
+    document.addEventListener("DOMContentLoaded", function(){
+        let el = document.getElementById("search");
+        console.log('el ', el);
+        if(el) {
+            console.log('el exists');
+            el.addEventListener("keydown",
+                function(event) {
+                    console.log('key code ', event.key)
+                    if (event.key == 'Enter'){
+                        event.preventDefault();
+                        handleOnClick();
+                    }
+                }, false);
+        }
+    });
+    
+    
 </script>
 
 <nav>
     <h1>Build-a-Bugbear</h1>
     <div class="search">
         <form>
-            <input placeholder="Enter monster name" bind:value={searchValue} />
+            <input id="search" placeholder="Enter monster name" bind:value={searchValue} />
             <button on:click={handleOnClick} type="button"><img alt="search for a monster" src="/assets/search.svg"/></button>
         </form>
         {#if $searchError}
