@@ -46,7 +46,16 @@
         <form method="get" action="file.doc">
             <div class="header">
                 <div>
-                    <h2>{$monster.name}</h2>
+                    <h2>
+
+
+                {#if edit}
+                    <input placeholder="{$monster.name}" bind:value={$monster.name} />
+                {:else}
+                    {$monster.name}
+                    
+                {/if}
+                    </h2>
                     <div>{$monster.size} {$monster.type} {$monster.subtype}</div>
                 </div>
                 <div class="buttons">
