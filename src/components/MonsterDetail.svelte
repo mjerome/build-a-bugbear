@@ -2,7 +2,7 @@
     import String from '../stats/String.svelte';
     import Object from '../stats/Object.svelte';
     import Nav from '../Nav.svelte';
-    import {monster} from '../stores';
+    import {monster, localMonsterList, STORAGE_ID, monsterStore} from '../stores';
     let stats = {
         'armor_class':'Armor Class',
         'hit_points': 'Hit Points',
@@ -28,7 +28,11 @@
 
     function toggleEdit() {
         edit = !edit;
-        console.log(edit);
+        console.log({edit});
+        console.log("whyyyyyyyyyy")
+        if (!edit) {
+            monsterStore.addMonster($monster)
+        }
         return (
             edit ? buttonValue = 'Done' : buttonValue = 'Edit'
         )
