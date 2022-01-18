@@ -13,20 +13,21 @@
     let addStat = () => {
         update((data) => {
             let length = Object.keys(data[lowerStats]).length;
-            console.log('length ', length);
+            if(data[lowerStats] === '') {
+                data[lowerStats] = {};
+            }
             data[lowerStats][parseInt(length)] = {
                 name: '',
                 desc: '',
             };
-            console.log('data ', data[lowerStats]);
             keys.push(length);
             return data;
         })
-        console.log('monster ', $monster);
     }
 </script>
 
-{#if $monster[lowerStats] && $monster[lowerStats] != ''}
+
+{#if ($monster[lowerStats] && $monster[lowerStats] != '') || edit}
     <div class={lowerStats, dawizard}>
         <h3>{stats}</h3>
         {#if $monster.legendary_desc != '' && lowerStats == 'legendary_actions'} 
@@ -36,21 +37,27 @@
                 <p>{$monster.legendary_desc}</p>
             {/if}
         {/if}
-        {#each Object.keys($monster[lowerStats]) as key}
-            <div class="stat">
-                {#if $monster[lowerStats][key]}
-                    {#if edit}
-                        <input bind:value={$monster[lowerStats][key].name}/>
-                        <textarea bind:value={$monster[lowerStats][key].desc} />
-                    {:else}
-                        <div class="stat-header">{$monster[lowerStats][key].name}</div>
-                        <div>{$monster[lowerStats][key].desc}</div>
+        {#if $monster[lowerStats] && $monster[lowerStats] != ''}
+            {#each Object.keys($monster[lowerStats]) as key}
+                <div class="stat">
+                    {#if $monster[lowerStats][key]}
+                        {#if edit}
+                            <input bind:value={$monster[lowerStats][key].name}/>
+                            <textarea bind:value={$monster[lowerStats][key].desc} />
+                        {:else}
+                            <div class="stat-header">{$monster[lowerStats][key].name}</div>
+                            <div>{$monster[lowerStats][key].desc}</div>
+                        {/if}
                     {/if}
-                {/if}
-            </div>
-        {/each}
+                </div>
+            {/each}
+        {/if}
         {#if edit}
             <button on:click={addStat}>+</button>
         {/if}
     </div>
+{:else}
+    {#if edit}
+        <button on:click={addStat}>Add {stats}</button>
+    {/if}
 {/if} 

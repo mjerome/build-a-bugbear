@@ -75,13 +75,3 @@ export const monsterStore = createMonsterStore();
 // //Parse JSON
 // export const enabled =
 //   writable < User > JSON.parse(localStorage.getItem("user"));
-
-// Method to get a list of all Monster
-export const getMonsterList = async () => {
-  try {
-    const response = await Api.get("/monsters");
-    return response.results;
-  } catch (error) {
-    console.error(error);
-  }
-};

@@ -1,33 +1,39 @@
 <script>
 
     import { onMount } from 'svelte';	
-	import {monster, searchError} from './stores';
+	import {monster, searchError, STORAGE_ID} from './stores';
     import {navigate} from 'svelte-routing';
-	import { getMonsterList, getMonsterByName } from "./apis/Monster"; // import our pokemon api calls
+	import { getMonsterByName } from "./apis/Monster"; // import our dnd api calls
     $: searchValue = '';
 	$: monsterDetail = monster;
 	$: error = searchError
 
     function handleOnClick() {
-		console.log('onClick called');
 		let search = searchValue.replaceAll(' ', '-').toLowerCase();
-        console.log('searchValue ', searchValue);
+        let storeData = localStorage.getItem(STORAGE_ID);
+        let localMonster;
+        if(storeData) {
+            storeData = JSON.parse(storeData);
+            localMonster = storeData.monsters.find(item => item.slug === search)        
+        }
+
 		getMonsterByName(search).then(res => {
-            console.log('getting Monster', res)
-            if(!$searchError) {
-                monster.set(res);
-			    monsterDetail = $monster;
+            if(localMonster && !$searchError) {
+                monster.set(localMonster)
+                monsterDetail = $monster;
+            } else {
+                if(!$searchError) {
+                    monster.set(res);
+                    monsterDetail = $monster;
+                }
             }
+            
 		}).then(() => {
-            console.log(searchError);
             if(!$searchError) {
                 let name = $monster.name
                 let lowerName = name ? name.replaceAll(' ', '-').toLowerCase() : '';
                 navigate("/monster/" + lowerName, { replace: true });
-                console.log('Nav ', lowerName);
-                // console.log('should have navigated');
                 searchValue='';
-                console.log('monster onMount ', $monster);
             }
             
 		});
@@ -36,12 +42,9 @@
 
     document.addEventListener("DOMContentLoaded", function(){
         let el = document.getElementById("search");
-        console.log('el ', el);
         if(el) {
-            console.log('el exists');
             el.addEventListener("keydown",
                 function(event) {
-                    console.log('key code ', event.key)
                     if (event.key == 'Enter'){
                         event.preventDefault();
                         handleOnClick();
