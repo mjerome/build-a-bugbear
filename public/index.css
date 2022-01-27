@@ -18,15 +18,14 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center; 
-  
+  text-align: center;
 }
 
-.top-nav nav{
+.top-nav nav {
   height: auto;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   padding: 3rem 3rem;
   margin-bottom: 2rem;
 }
@@ -35,14 +34,29 @@ nav {
   margin-bottom: 0;
 }
 
+.top-nav .button-container {
+  flex-direction: row;
+  width: 50%;
+}
+
+.button-container {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.button-container > div {
+  flex-basis: 50%;
+  margin: 2rem;
+}
+
 .top-nav nav .search {
   margin-right: 0;
 }
 
 nav .search {
   position: relative;
-  width: 40%;
-  margin: 0 auto;
   height: 3rem;
 }
 
@@ -57,12 +71,12 @@ nav form {
 }
 
 nav input {
-  height: 100%;
+  height: 3rem;
   width: 100%;
   border-radius: 4px;
   margin-right: -4px;
 }
-nav button {
+nav .search button {
   position: absolute;
   top: 0;
   right: 0;
@@ -96,21 +110,21 @@ h1 {
   letter-spacing: 1px;
   margin-top: 0;
   color: #30322f;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-weight: 300;
-  margin-bottom: 6rem;
+  margin-bottom: 3rem;
 }
 
 h2 {
   color: #30322f;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 2rem;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   margin-bottom: 1rem;
 }
 
 h3 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 1.5rem;
   letter-spacing: 0.5px;
 }
@@ -163,15 +177,22 @@ textarea {
 }
 
 button {
-  background: #fff;
+  background: #30322f;
   border: solid 1px #ccc;
-  border-radius: 4px;
-  color: #30322f;
+  border-radius: 6px;
+  color: #fff;
   font-weight: bold;
+  margin-bottom: 0;
+}
+
+.default-button {
+  font-weight: 500;
+  padding: 0.5rem 1.5rem;
+  height: 100%;
 }
 
 .not-found {
-  background-color:  #fff;
+  background-color: #fff;
   height: 100vh;
 }
 
@@ -189,7 +210,6 @@ button {
 }
 
 @media screen and (max-width: 500px) {
-
   nav .search {
     position: relative;
     width: 50%;
@@ -202,7 +222,6 @@ button {
     width: 80%;
     margin: 0;
   }
-
 
   .home button {
     position: initial;
@@ -221,21 +240,33 @@ button {
   }
 
   .home button::before {
-    content: 'Search';
+    content: "Search";
   }
 
-  .top-nav nav{
+  .top-nav nav {
     flex-direction: column;
     align-items: flex-start;
   }
 
   .top-nav .search {
     width: 100%;
+    order: 2;
   }
 
   .top-nav nav h1 {
     font-size: 1.4rem;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .top-nav .button-container {
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-end;
+    order: 1;
+  }
+
+  .button-container > div {
+    margin: 1rem 0;
   }
 }
 

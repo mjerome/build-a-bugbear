@@ -2,7 +2,7 @@
     import String from '../stats/String.svelte';
     import Object from '../stats/Object.svelte';
     import Nav from '../Nav.svelte';
-    import {monster, localMonsterList, STORAGE_ID, monsterStore} from '../stores';
+    import {monster, localMonsterList, STORAGE_ID, monsterStore, edit} from '../stores';
     let stats = {
         'armor_class':'Armor Class',
         'hit_points': 'Hit Points',
@@ -22,20 +22,22 @@
         'senses': 'Senses',
         'challenge_rating': 'Challenge'
     }
-    let buttonValue = 'Edit';
-    $: edit = false;
+    console.log('monster edit', $edit);
+    $:buttonValue = $edit ? 'Done' : 'Edit'
+
+    //Style Create New Button
+    //Make proficencies and speed use an add button
+    //Why are legendary actions showing up?
+    //Search is not searching local storage
+    
     
 
     function toggleEdit() {
-        edit = !edit;
-        console.log({edit});
-        console.log("whyyyyyyyyyy")
-        if (!edit) {
+        $edit = !$edit;
+        console.log({$edit});
+        if (!$edit) {
             monsterStore.addMonster($monster)
         }
-        return (
-            edit ? buttonValue = 'Done' : buttonValue = 'Edit'
-        )
     }
 
     console.log('new Monster block ', $monster);
@@ -53,7 +55,7 @@
                     <h2>
 
 
-                {#if edit}
+                {#if $edit}
                     <input placeholder="{$monster.name}" bind:value={$monster.name} />
                 {:else}
                     {$monster.name}
@@ -71,31 +73,27 @@
         <Object 
             stats={stats}
             dawizard='stats'
-            edit={edit}
         />
         <Object
             stats={abilities}
             dawizard='abilities'
-            edit={edit}
         />
         <Object
             stats={proficiencies}
             dawizard='proficiencies'
-            edit={edit}
         />
         <String
             stats="Special Abilities"
             dawizard='special-abilities'
-            edit={edit}
         />
         <String
             stats="Actions"
             dawizard='actions'
-            edit={edit}/>
+        />
         <String
             stats="Legendary Actions"
             dawizard='legendar-actions'
-            edit={edit}/>
+            />
     </div>
 </main>
 

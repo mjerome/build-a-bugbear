@@ -1,7 +1,6 @@
 <script>
     export let stats;
-    import {monster} from '../stores.js';
-    export let edit;
+    import {monster, edit} from '../stores.js';
     export let dawizard;
 
     let lowerStats = stats.replaceAll(' ','_').toLowerCase()
@@ -27,11 +26,11 @@
 </script>
 
 
-{#if ($monster[lowerStats] && $monster[lowerStats] != '') || edit}
+{#if ($monster[lowerStats] && $monster[lowerStats] != '') || $edit}
     <div class={lowerStats, dawizard}>
         <h3>{stats}</h3>
         {#if $monster.legendary_desc != '' && lowerStats == 'legendary_actions'} 
-            {#if edit}
+            {#if $edit}
                 <textarea bind:value={$monster.legendary_desc}/>
             {:else}
                 <p>{$monster.legendary_desc}</p>
@@ -41,7 +40,7 @@
             {#each Object.keys($monster[lowerStats]) as key}
                 <div class="stat">
                     {#if $monster[lowerStats][key]}
-                        {#if edit}
+                        {#if $edit}
                             <input bind:value={$monster[lowerStats][key].name}/>
                             <textarea bind:value={$monster[lowerStats][key].desc} />
                         {:else}
@@ -52,12 +51,12 @@
                 </div>
             {/each}
         {/if}
-        {#if edit}
+        {#if $edit}
             <button on:click={addStat}>+</button>
         {/if}
     </div>
 {:else}
-    {#if edit}
+    {#if $edit}
         <button on:click={addStat}>Add {stats}</button>
     {/if}
 {/if} 

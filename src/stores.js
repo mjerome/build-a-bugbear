@@ -6,6 +6,28 @@ export const searchError = writable(false);
 export const monster = writable(itemValue);
 export const STORAGE_ID = "local-monster-data";
 export const localMonsterList = writable({ monsters: [] });
+export const edit = writable(false);
+export const newMonster = {
+  actions: "",
+  armor_class: "",
+  charisma: "",
+  challenge_rating: "",
+  constitution: "",
+  dexterity: "",
+  hit_points: "",
+  intelligence: "",
+  languages: "",
+  name: "",
+  senses: "",
+  size: "-- ",
+  skills: "",
+  special_abilities: "",
+  speed: "",
+  strength: "",
+  subtype: "--",
+  type: "--",
+  wisdom: "",
+};
 
 function createMonsterStore() {
   let storeData;

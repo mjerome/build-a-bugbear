@@ -1,10 +1,9 @@
 <script>
     import { afterUpdate, onMount } from "svelte";
     export let stats;
-    export let edit;
     export let dawizard;
-    import { monster } from "../stores";
-    $: disabled = edit == true ? "" : "disabled";
+    import { monster, edit } from "../stores";
+    $: disabled = $edit == true ? "" : "disabled";
 
     let mainKeys = [];
     let tempOrder = [];
@@ -40,7 +39,7 @@
             {#if typeof $monster[stat] === "object"}
                 {#each Object.keys($monster[stat]) as sub}
                     
-                    {#if edit}
+                    {#if $edit}
                         <div>
                             <input placeholder="add a skill name" bind:value={$monster[stat][sub].name} />
                             <input placeholder="add a skill value" bind:value={$monster[stat][sub].desc} />
@@ -54,10 +53,10 @@
                         
                     {/if}
                 {/each}
-                {#if edit}
+                {#if $edit}
                     <button on:click={() => addSkills(stat)}>+</button>
                 {/if}
-            {:else if edit}
+            {:else if $edit}
                 <input
                     size={$monster[stat].length}
                     bind:value={$monster[stat]}
@@ -65,7 +64,7 @@
             {:else}
                 <span>{$monster[stat]}</span>
             {/if}
-            <!-- {#if edit}
+            <!-- {#if $edit}
                     <input size={$monster[stat].length} value={ability(stat)}/>
                 {:else}
                     <span>{ability(stat)}</span>
