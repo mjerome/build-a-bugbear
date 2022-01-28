@@ -26,9 +26,7 @@
     $:buttonValue = $edit ? 'Done' : 'Edit'
 
     //Style Create New Button
-    //Make proficencies and speed use an add button
-    //Why are legendary actions showing up?
-    //Search is not searching local storage
+    //Search is not searching local storage if the name is changed
     
     
 

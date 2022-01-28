@@ -21,23 +21,12 @@
 
     function handleOnClick() {
 		let search = searchValue.replaceAll(' ', '-').toLowerCase();
-        let storeData = localStorage.getItem(STORAGE_ID);
-        let localMonster;
-        if(storeData) {
-            storeData = JSON.parse(storeData);
-            localMonster = storeData.monsters.find(item => item.slug === search)        
-        }
 
 		getMonsterByName(search).then(res => {
-            if(localMonster && !$searchError) {
-                monster.set(localMonster)
-                monsterDetail = $monster;
-            } else {
                 if(!$searchError) {
                     monster.set(res);
                     monsterDetail = $monster;
                 }
-            }
             
 		}).then(() => {
             if(!$searchError) {
@@ -71,7 +60,7 @@
     <h1>Build-a-Bugbear</h1>
     <div class="button-container">
         <div class="search">
-            <form>
+            <form class="search-form">
                 <input id="search" placeholder="Search by monster name" bind:value={searchValue} />
                 <button on:click={handleOnClick} type="button"><img alt="search for a monster" src="/assets/search.svg"/></button>
             </form>

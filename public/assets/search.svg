@@ -1,4 +1,23 @@
-<svg width="30" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="11.0658" cy="11.0658" r="9.56579" stroke="#00582E" stroke-width="3"/>
-<line x1="18.6133" y1="18.0183" x2="28.5344" y2="27.9393" stroke="#00582E" stroke-width="3"/>
+<svg
+  width="30"
+  height="29"
+  viewBox="0 0 30 29"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <circle
+    cx="11.0658"
+    cy="11.0658"
+    r="9.56579"
+    stroke="#ffffff"
+    stroke-width="3"
+  />
+  <line
+    x1="18.6133"
+    y1="18.0183"
+    x2="28.5344"
+    y2="27.9393"
+    stroke="#ffffff"
+    stroke-width="3"
+  />
 </svg>
