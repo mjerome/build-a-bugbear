@@ -20,15 +20,12 @@
         'skills': 'Skills', 
         'languages': 'Languages',
         'senses': 'Senses',
+        'damage_resistances': 'Damage Resistances',
+        'damage_immunities': 'Damage Immunities',
         'challenge_rating': 'Challenge'
     }
     console.log('monster edit', $edit);
     $:buttonValue = $edit ? 'Done' : 'Edit'
-
-    //Style Create New Button
-    //Search is not searching local storage if the name is changed
-    
-    
 
     function toggleEdit() {
         $edit = !$edit;

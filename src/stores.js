@@ -13,6 +13,8 @@ export const newMonster = {
   charisma: "",
   challenge_rating: "",
   constitution: "",
+  damage_immunities: "",
+  damage_resistances: "",
   dexterity: "",
   hit_points: "",
   intelligence: "",
